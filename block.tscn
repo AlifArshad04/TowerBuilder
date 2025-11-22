@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvi5on36m57md"]
+
+[ext_resource type="Script" uid="uid://fampq3efhnpi" path="res://block.gd" id="1_im0tn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qncar"]
+friction = 0.8
+
+[sub_resource type="Gradient" id="Gradient_qncar"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_im0tn"]
+gradient = SubResource("Gradient_qncar")
+width = 60
+height = 60
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qncar"]
+size = Vector2(60, 60)
+
+[node name="Block" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_qncar")
+script = ExtResource("1_im0tn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.49115312, 0.82275283, 0.8046581, 1)
+texture = SubResource("GradientTexture2D_im0tn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qncar")
+
+[node name="ScreenNotifier" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-30, -28, 58, 58)

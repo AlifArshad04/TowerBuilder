@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://7bhl4l8kuut2"]
+
+[ext_resource type="Script" uid="uid://mdvshkw4lonx" path="res://scripts/main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://da2vkhoe804wq" path="res://scripts/UI/GameOverPanel.gd" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://chlonyi4t67di" path="res://scripts/ScoreManager.gd" id="4_1bvp3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
+size = Vector2(400, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(641, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(642.99994, 7.9999847)
+
+[node name="Main" type="Node2D"]
+process_mode = 3
+position = Vector2(2, 330)
+script = ExtResource("1_ig7tw")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0, 300)
+shape = SubResource("RectangleShape2D_7dm0k")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground"]
+position = Vector2(-571.5, 0)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ground"]
+position = Vector2(570, 0)
+rotation = -1.5707963
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="GameCamera" type="Camera2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameOverPanel" type="Panel" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_h2yge")
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9891426, 1.0770396)
+text = "GAME OVER
+Press R to restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score: 0"
+
+[node name="ScoreManager" type="Node" parent="."]
+script = ExtResource("4_1bvp3")
